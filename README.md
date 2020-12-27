@@ -1,69 +1,46 @@
 # bash-insulter
-Randomly insults the user when typing wrong command.
 
-Change insults as needed :)
+Mi versión de bash-insulter, con un toque personal de sátira
+y malas palabras.
 
-```bash
-noob@bender:~ $ sl
+El trabajo original es de https://github.com/hkbakke/bash-insulter 
+todo el crédito (sin las consecuencias feas que puedan salir) son para
+el.
 
-  Y u no speak computer???
+## DISCLAIMER
 
--bash: sl: command not found
-noob@bender:~ $ gti status
+:warning: Este fork contiene lenguaje un poco fuerte, pero
+eso ya deberías saberlo. Aun así, pongo este warning por si
+eres un mazapan que se pueda ofender a sabiendas de lo que
+va a instalar.
 
-  This is why nobody likes you.
+Por favor ten en cuenta que este programa está hecho con
+el objetivo de entretener y no dirigido a una persona en
+específico por lo tanto, si te sientes identificado u 
+ofendido con los resultados del programa es tu pedo
+xdXDXdxDxD pa que no andes instalando cosas que luego
+no te van a gustar.
 
--bash: gti: command not found
-noob@bender:~ $ sp aux
-
-  Go outside.
-
--bash: sp: command not found
-```
-
-# Compatibility
-* Bash v4 and newer
+# Compatibilidad
+* Bash v4 o superior.
 * Zsh
 
-# Installation
+# Instalación
 
-    # Method 1 - know what you are doing
-    git clone https://github.com/hkbakke/bash-insulter.git bash-insulter
+    # Método 1 - Para pros
+    
+    git clone https://github.com/VentGrey/bash-insulter-ventgrey.git
     sudo cp bash-insulter/src/bash.command-not-found /etc/
 
-    # Method 2 - I don't care, insult me!
-    sudo wget -O /etc/bash.command-not-found https://raw.githubusercontent.com/hkbakke/bash-insulter/master/src/bash.command-not-found
+    # Método 2 - Solo insúltame porfi
+    sudo wget -O /etc/bash.command-not-found https://raw.githubusercontent.com/VentGrey/bash-insulter-ventgrey/master/src/bash.command-not-found
 
-Then source the file automatically for new logins by adding the following to `/etc/bash.bashrc` or any of the other locations where you can configure your shell automatically during login:
-```
+Luego de eso ejecuta `source` en el archivo o añade el siguiente comando al archivo de `/etc/bash.bashrc`o cualquier otra localización que utilicen las shells con las que inicias sesión, puedes también añadirlo al `~/.bashrc` si no deseas que mi versión ande mentando madres a múltiples usuarios:
+```sh
 if [ -f /etc/bash.command-not-found ]; then
     . /etc/bash.command-not-found
 fi
 ```
-Login again and type some invalid commands for the effects to be visible.
+Cierra sesión o reinicia tu shell para ver los hermosos efectos.
 
-Note: You will have to add the script to `.zshrc` if you are using `zsh`
-
-# Configuration
-bash-insulter can be customized, or even be made polite and nice, by populating `CMD_NOT_FOUND_MSGS` or `CMD_NOT_FOUND_MSGS_APPEND` environment variables. The values should be arrays. `CMD_NOT_FOUND_MSGS` replaces the default messages, while `CMD_NOT_FOUND_MSGS_APPEND` appends more messages to the existing ones.
-
-It is probably cleanest to source a file populating the environment variable as needed. In this example I create a file `/etc/bash.command-not-found-messages` with the following content:
-
-    CMD_NOT_FOUND_MSGS=(
-        "You are so smart!"
-        "You look pretty today!"
-        "I don't know what to say"
-    )
-    
-Then source this file before you source the script:
-```
-if [ -f /etc/bash.command-not-found-messages ]; then
-    . /etc/bash.command-not-found-messages
-fi
-
-if [ -f /etc/bash.command-not-found ]; then
-    . /etc/bash.command-not-found
-fi
-```
-
-Then logout and in again. The end result is that you will now use your messages instead of the default ones.
+Nota: Si usas `zsh` deberás añadirlo al archivo `.zshrc`.
